@@ -387,3 +387,44 @@
         height: 350px;
     }
 }
+
+.prev-calc-results-header h3 {
+    margin: 0;
+    font-size: 30px;
+    color: #333;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0;
+    display: inline-block;
+}
+
+.prev-calc-results-header h3:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #6e8efb, #a777e3);
+    border-radius: 2px;
+}
+
+/* Stile per il nome del preventivo nell'intestazione */
+.prev-calc-results-header h3 span {
+    display: inline-block;
+    position: relative;
+}
+
+/* Stile per la stampa PDF */
+@media print {
+    .prev-calc-results-header h3 {
+        font-size: 20px;
+        margin-top: 0;
+        page-break-after: avoid;
+    }
+    
+    .prev-calc-results-header h3:after {
+        height: 3px;
+        bottom: -6px;
+    }
+}

@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
 
         // Ottieni il nome del preventivo
-        const nomePrevent = $("#nome-preventivo").val() || "Preventivo";
+        const nomePreventivo = $("#nome-preventivo").val() || "Preventivo";
         console.log("Nome preventivo inserito:", nomePrevent);
 
         const vendita = parseFloat($("#vendita").val()) || 0;
@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
         const percentualeGuadagno = (guadagnoNetto / totale) * 100;
 
         // Aggiorna il titolo
-        $("#report-titolo").text("Report del Preventivo: \"" + nomePrevent + "\"");
+		$("#report-title").text("Report Dettagliato: " + nomePreventivo);
 
         $("#result-vendita").text(formatNumber(vendita) + " €");
         $("#result-imponibile").text(formatNumber(totaleImponibile) + " €");
