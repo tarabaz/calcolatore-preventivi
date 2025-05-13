@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         
         // Ottieni i valori dal form
-         const nomePreventivo = $("#nome-preventivo").val() || "Preventivo";
+         const titoloPreventivo = $("#nome-preventivo").val() || "Preventivo";
         const vendita = parseFloat($("#vendita").val()) || 0;
         const costiScaricabili = parseFloat($("#costi-scaricabili").val()) || 0;
         const costiNonScaricabili = parseFloat($("#costi-non-scaricabili").val()) || 0;

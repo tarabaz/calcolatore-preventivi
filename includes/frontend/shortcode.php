@@ -36,7 +36,7 @@ function prev_calc_shortcode() {
         
         <div id="prev-calc-results" class="prev-calc-results">
 <div class="prev-calc-results-header">
-                <h3 id="report-title">Report Dettagliato del Preventivo</h3>
+                <h3 id="report-titolo"></h3>
     <p>Data: <span id="report-date"></span></p>
 </div>
             
