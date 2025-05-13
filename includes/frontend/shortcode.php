@@ -18,8 +18,8 @@ function prev_calc_shortcode() {
         <div class="prev-calc-form">
             <h3>Calcolatore Preventivi</h3>
             <form id="prev-calc-form">
-                <label for="nome-preventivo">Nome Preventivo</label>
-                <input type="text" id="nome-preventivo" name="nome-preventivo" placeholder="Inserisci un nome per questo preventivo">
+        <label for="nome-preventivo">Titolo del Preventivo</label>
+        <input type="text" id="nome-preventivo" name="nome-preventivo" placeholder="Inserisci un nome per il preventivo">
                 
                 <label for="vendita">Valore di Vendita al Dettaglio (€)</label>
                 <input type="number" id="vendita" name="vendita" step="1" min="0" required>
@@ -36,7 +36,7 @@ function prev_calc_shortcode() {
         
         <div id="prev-calc-results" class="prev-calc-results">
 <div class="prev-calc-results-header">
-                <h3 id="report-titolo"></h3>
+    <h3 id="report-titolo">Report dettagliato preventivo</h3>
     <p>Data: <span id="report-date"></span></p>
 </div>
             

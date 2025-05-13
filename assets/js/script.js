@@ -2,83 +2,79 @@ jQuery(document).ready(function($) {
     const form = $("#prev-calc-form");
     const resultsDiv = $("#prev-calc-results");
     let pieChart = null;
-    
+
     form.on("submit", function(e) {
         e.preventDefault();
-        
-        // Ottieni i valori dal form
-         const titoloPreventivo = $("#nome-preventivo").val() || "Preventivo";
+
+        // Ottieni il nome del preventivo
+        const nomePrevent = $("#nome-preventivo").val() || "Preventivo";
+        console.log("Nome preventivo inserito:", nomePrevent);
+
         const vendita = parseFloat($("#vendita").val()) || 0;
         const costiScaricabili = parseFloat($("#costi-scaricabili").val()) || 0;
         const costiNonScaricabili = parseFloat($("#costi-non-scaricabili").val()) || 0;
-        
-        // Ottieni le percentuali dalle impostazioni
+
         const iva = parseFloat(prevCalcData.iva) || 22;
         const tassazione = parseFloat(prevCalcData.tassazione) || 34;
-        
-        // Esegui i calcoli
+
         const totale = vendita;
         const totaleImponibile = totale / (1 + (iva / 100));
         const totaleIva = totale - totaleImponibile;
-        
+
         const totaleCosti = costiScaricabili + costiNonScaricabili;
         const utile = totaleImponibile - totaleCosti;
         const imposte = utile * (tassazione / 100);
         const guadagnoNetto = utile - imposte;
-        
-        // Formattazione numeri con separatore di migliaia e 2 decimali
+
         const formatNumber = (num) => {
             return num.toLocaleString("it-IT", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
         };
-        
-        // Percentuale di guadagno sul totale
-        const percentualeGuadagno = (guadagnoNetto / totale) * 100;
-        
-        // Aggiorna il titolo del report
-       // $("#report-title").text(nomePreventivo);
-        $("#report-titolo").text("Report Dettagliato del Preventivo - \"" + titoloPreventivo + "\"");
 
-        // Aggiorna la tabella dei risultati
+        const percentualeGuadagno = (guadagnoNetto / totale) * 100;
+
+        // Aggiorna il titolo
+        $("#report-titolo").text("Report del Preventivo: \"" + nomePrevent + "\"");
+
         $("#result-vendita").text(formatNumber(vendita) + " €");
         $("#result-imponibile").text(formatNumber(totaleImponibile) + " €");
         $("#result-iva").text(formatNumber(totaleIva) + " €");
         $("#result-iva-percent").text(iva + "%");
-        
+
         $("#result-costi-scaricabili").text(formatNumber(costiScaricabili) + " €");
         $("#result-costi-non-scaricabili").text(formatNumber(costiNonScaricabili) + " €");
         $("#result-totale-costi").text(formatNumber(totaleCosti) + " €");
-        
+
         $("#result-utile").text(formatNumber(utile) + " €");
         $("#result-imposte").text(formatNumber(imposte) + " €");
         $("#result-imposte-percent").text(tassazione + "%");
         $("#result-guadagno-netto").text(formatNumber(guadagnoNetto) + " €");
         $("#result-percentuale-guadagno").text(formatNumber(percentualeGuadagno) + "%");
-        
-        // Aggiorna la data
+
         const now = new Date();
-        const options = { 
-            year: "numeric", 
-            month: "long", 
+        const options = {
+            year: "numeric",
+            month: "long",
             day: "numeric",
             hour: "2-digit",
             minute: "2-digit"
         };
         $("#report-date").text(now.toLocaleDateString("it-IT", options));
-        
-        // Crea o aggiorna il grafico a torta
+
         createPieChart(totaleCosti, totaleIva, imposte, guadagnoNetto);
-        
-        // Mostra i risultati
+
         resultsDiv.fadeIn();
-        
-        // Scorri fino ai risultati
         $("html, body").animate({
             scrollTop: resultsDiv.offset().top - 50
         }, 500);
     });
+
+    // Le funzioni createPieChart e updateChartLegend restano uguali
+    // ...
+});
+
     
     // Funzione per creare il grafico a torta
     function createPieChart(totaleCosti, totaleIva, imposte, guadagnoNetto) {
