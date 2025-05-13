@@ -36,7 +36,8 @@ jQuery(document).ready(function($) {
         const percentualeGuadagno = (guadagnoNetto / totale) * 100;
 
         // Aggiorna il titolo
-		$("#report-title").text("Report Dettagliato: " + nomePreventivo);
+		//$("#report-title").text("Report Dettagliato: " + nomePreventivo);
+		$("#report-title").html("Report Dettagliato del Preventivo: <strong>" + nomePreventivo + "</strong>");
 
         $("#result-vendita").text(formatNumber(vendita) + " €");
         $("#result-imponibile").text(formatNumber(totaleImponibile) + " €");
